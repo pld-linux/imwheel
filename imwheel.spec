@@ -3,8 +3,8 @@ Name:		imwheel
 Version:	0.9.6
 Release:	1
 License:	GPL
-Group:		User Interface/X Hardware Support
-Group(pl):	Aplikacje/Bazy danych/Interfejsy
+Group:		X11/Utilities
+Group(pl):	X11/Narzêdzia
 Source0:	%{name}-%{version}.tar.gz
 Source1:	wheel.pl.bz2
 Source2:	imwheelrc.bz2
@@ -18,9 +18,9 @@ URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
 %define         _sysconfdir     /etc/X11
 
 %description 
-Imwheel, helps enable the "wheel" found on many newer mice such as  the
-Microsoft IntelliMouse, the Genius NetMouse, and several varieties of mice
-from Logitech.
+Imwheel, helps enable the "wheel" found on many newer mice such as the
+Microsoft IntelliMouse, the Genius NetMouse, and several varieties of
+mice from Logitech.
 
 %prep
 %setup -q
