@@ -41,6 +41,7 @@ przy czym dla ka¿dego programy mog± one byæ inne.
 %setup -q
 %patch0 -p1 
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoconf
