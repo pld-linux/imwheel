@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Do not create pid, because if process dies, it leaves pid file which
+# prevents running imwheel by other users.
+/usr/X11R6/bin/imwheel -p
