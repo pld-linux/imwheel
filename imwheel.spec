@@ -1,3 +1,5 @@
+# TODO:
+# - SECURITY: http://securitytracker.com/alerts/2004/Aug/1011049.html
 Summary:	An utility to make wheel mice work under X
 Summary(pl):	Narzêdzie pozwalaj±ce wykorzystaæ rolki myszy w X
 Name:		imwheel
