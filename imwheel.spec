@@ -45,7 +45,7 @@ przy czym dla ka¿dego programy mog± one byæ inne.
 %build
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure \
 	--with-x \
 	--disable-gpm
