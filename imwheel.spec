@@ -7,13 +7,13 @@ Version:	0.9.9
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://jonatkins.org/imwheel/files/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/imwheel/%{name}-%{version}.tar.gz
 # Source0-md5:	1010dadb54a38a20f7fec430e6e5d262
 Source1:	%{name}-xinitrc
 Patch0:		%{name}-etc_X11.patch.bz2
 Patch1:		%{name}-Makefile.patch
 Patch2:		%{name}-%{name}rc.patch
-URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
+URL:		http://imwheel.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
