@@ -1,0 +1,20 @@
+--- imwheel-0.9.9pre3.orig/util.c	Fri Jun 16 15:24:02 2000
++++ imwheel-0.9.9pre3/util.c	Fri Jun 16 15:55:35 2000
+@@ -1128,11 +1128,12 @@
+ 	else
+ 		Printf("Matched with : id=\"%s\" button=%d pri=%d\n",wap->id,wap->button,wap->pri);
+ 	// throw out UNGRABs when looking for things that need GRAB on
+-	if(wap->button == UNGRAB && button == GRAB)
+-	{
+-		Printf("Exclude may have a higher priority due to file position or the priority command\n");
+-		wap=NULL;
+-	}
++	if(wap)
++		if(wap->button == UNGRAB && button == GRAB)
++		{
++			Printf("Exclude may have a higher priority due to file position or the priority command\n");
++			wap=NULL;
++		}
+ 	return(wap);
+ }
+ /*----------------------------------------------------------------------------*/
