@@ -11,11 +11,11 @@ Source1:	%{name}-xinitrc
 Patch0:		%{name}-etc_X11.patch.bz2
 Patch1:		%{name}-Makefile.patch
 Patch2:		%{name}-%{name}rc.patch
+URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
+BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
 
 %define         _sysconfdir     /etc/X11
 
@@ -33,7 +33,7 @@ takich jak Microsoft IntelliMouse, Genius NetMouse, myszkach Logitecha
 oraz innych.
 
 Imwheel pozwala powi±zaæ sekwencje klawiszy z obrotami kó³ek myszy,
-przy czym dla ka¿dego programy mog± one byæ inne.
+przy czym dla ka¿dego programu mog± one byæ inne.
 
 %prep
 %setup -q
@@ -68,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog README EMACS NEWS TODO
-%config %{_sysconfdir}/imwheelrc
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/imwheelrc
 %attr(755,root,root) %{_sysconfdir}/xinit/xinitrc.d/imwheel
 %attr(755,root,root) %{_bindir}/imwheel
 %{_mandir}/man?/imwheel*
