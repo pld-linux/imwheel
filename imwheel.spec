@@ -22,18 +22,19 @@ URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
 
 %description 
 Imwheel helps enable the "wheel" found on many newer mice such as the
-Microsoft IntelliMouse, the Genius NetMouse, several varieties of
-mice from Logitech and other.
+Microsoft IntelliMouse, the Genius NetMouse, several varieties of mice
+from Logitech and other.
 
 It does it by emulating key sequences, which are configurable on
 per-program basis.
 
 %description -l pl
-Imwheel pomaga wykorzystaæ "kó³ka" dostêpne w wielu nowych myszkach, takich
-jak Microsoft IntelliMousem, Genius NetMouse, myszkach Logitecha oraz innych.
+Imwheel pomaga wykorzystaæ "kó³ka" dostêpne w wielu nowych myszkach,
+takich jak Microsoft IntelliMousem, Genius NetMouse, myszkach
+Logitecha oraz innych.
 
-Imwheel pozwala powi±zaæ sekwencje klawiszy z obrotami kó³ek myszy, przy czym
-dla ka¿dego programy mog± one byæ inne.
+Imwheel pozwala powi±zaæ sekwencje klawiszy z obrotami kó³ek myszy,
+przy czym dla ka¿dego programy mog± one byæ inne.
 
 %prep
 %setup -q
@@ -42,6 +43,7 @@ dla ka¿dego programy mog± one byæ inne.
 %patch2 -p1
 
 %build
+LDFLAGs="-s"; export LDFLAGs
 %configure \
 	--with-x \
 	--disable-gpm
@@ -50,7 +52,7 @@ dla ka¿dego programy mog± one byæ inne.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR="$RPM_BUILD_ROOT"
+%{__make} install DESTDIR="$RPM_BUILD_ROOT"
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
