@@ -7,6 +7,7 @@ License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
@@ -48,19 +49,23 @@ przy czym dla ka¿dego programy mog± one byæ inne.
 %patch2 -p1
 
 %build
+aclocal
 autoconf
 automake -a -c
 %configure \
 	--with-x \
 	--disable-gpm
 
-%{__make} DESTDIR="$RPM_BUILD_ROOT"
+%{__make} \
+	DESTDIR="$RPM_BUILD_ROOT"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d
-%{__make} install DESTDIR="$RPM_BUILD_ROOT"
+
+%{__make} install \
+	DESTDIR="$RPM_BUILD_ROOT"
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d/%{name}
 
@@ -75,4 +80,4 @@ rm -rf $RPM_BUILD_ROOT
 %config %{_sysconfdir}/imwheelrc
 %attr(755,root,root) %{_sysconfdir}/xinit/xinitrc.d/imwheel
 %attr(755,root,root) %{_bindir}/imwheel
-%{_mandir}/man1/imwheel*
+%{_mandir}/man?/imwheel*
