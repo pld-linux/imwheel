@@ -1,0 +1,54 @@
+diff -urN imwheel-0.9.9.orig/imwheelrc imwheel-0.9.9/imwheelrc
+--- imwheel-0.9.9.orig/imwheelrc	Tue Feb 13 11:34:12 2001
++++ imwheel-0.9.9/imwheelrc	Wed Sep 19 22:12:31 2001
+@@ -94,22 +94,22 @@
+ # If you want to scroll by a few lines then uncomment these 4 lines
+ # and comment out the paging 4 lines below these!
+ #
+-#Shift_L,	Down,	Page_Down,			1,	1000,	1000
+-#Shift_L,	Up,		Page_Up,			1,	1000,	1000
+-#None,		Down,	Down,				7,	1000,	1000
+-#None,		Up,		Up,					7,	1000,	1000
++Shift_L,	Down,	Page_Down,			1,	1000,	1000
++Shift_L,	Up,		Page_Up,			1,	1000,	1000
++None,		Down,	Down,				7,	1000,	1000
++None,		Up,		Up,					7,	1000,	1000
+ #
+ # If you don't like page scrolling then comment these out and uncomment above!
+ #
+-Shift_L,	Down,	Down,				7,
+-Shift_L,	Up,		Up,					7,
+-None,		Down,	Page_Down,			1,
+-None,		Up,		Page_Up,			1,
++#Shift_L,	Down,	Down,				7,
++#Shift_L,	Up,		Up,					7,
++#None,		Down,	Page_Down,			1,
++#None,		Up,		Page_Up,			1,
+ # Left/Right & Thumb stuff
+-None,		Left,	Left,				7,
+-None,		Right,	Right,				7,
+-None,		Thumb,	Down,				7,
+-Shift_L,	Thumb,	Up,					7,
++#None,		Left,	Left,				7,
++#None,		Right,	Right,				7,
++#None,		Thumb,	Down,				7,
++#Shift_L,	Thumb,	Up,					7,
+ 
+ "^Netscape"
+ #
+@@ -173,6 +173,15 @@
+ ,	Up,		Page_Up
+ ,	Down,	Page_Down
+ 
++".*Galeon.*"
++@Exclude
++
++".*Mozilla..Build ID:.*"
++@Exclude
++
++"- Konqueror"
++@Exclude
++
+ #
+ # Uncommment the following to exclude by default.
+ # Then you will have to add new apps all the time, but will retain any built-in
