@@ -1,0 +1,20 @@
+diff -urN imwheel-0.9.9.orig/Makefile.am imwheel-0.9.9/Makefile.am
+--- imwheel-0.9.9.orig/Makefile.am	Thu Feb 22 08:38:26 2001
++++ imwheel-0.9.9/Makefile.am	Wed Sep 19 19:13:53 2001
+@@ -25,12 +25,12 @@
+ if SUID
+ install-exec-hook:
+ 	progname=$(DESTDIR)$(bindir)/`echo imwheel|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'` ; \
+-	chown @suid@ $$progname ; \
+-	chmod u+s $$progname
+-	install -m 644 imwheelrc /etc/imwheelrc
++	#chown @suid@ $$progname ; \
++	#chmod u+s $$progname
++	install -m 644 imwheelrc $(DESTDIR)/etc/X11//imwheelrc
+ else
+ install-exec-hook:
+-	install -m 644 imwheelrc /etc/imwheelrc
++	install -m 644 imwheelrc $(DESTDIR)/etc/X11/imwheelrc
+ endif
+ 
+ extras: $(EXTRA_PROGRAMS)
