@@ -20,7 +20,7 @@ URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
 %define		_mandir		%{_prefix}/man
 %define         _sysconfdir     /etc/X11
 
-%description 
+%description
 Imwheel helps enable the "wheel" found on many newer mice such as the
 Microsoft IntelliMouse, the Genius NetMouse, several varieties of mice
 from Logitech and other.
@@ -38,7 +38,7 @@ przy czym dla ka¿dego programy mog± one byæ inne.
 
 %prep
 %setup -q
-%patch0 -p1 
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
