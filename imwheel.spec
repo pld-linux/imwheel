@@ -43,7 +43,8 @@ przy czym dla ka¿dego programy mog± one byæ inne.
 %patch2 -p1
 
 %build
-aclocal
+rm -f missing
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
@@ -55,7 +56,6 @@ aclocal
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d
 
 %{__make} install \
@@ -63,14 +63,12 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d/%{name}
 
-gzip -9nf AUTHORS BUGS ChangeLog README EMACS NEWS TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {AUTHORS,BUGS,ChangeLog,README,EMACS,NEWS,TODO}.gz
+%doc AUTHORS BUGS ChangeLog README EMACS NEWS TODO
 %config %{_sysconfdir}/imwheelrc
 %attr(755,root,root) %{_sysconfdir}/xinit/xinitrc.d/imwheel
 %attr(755,root,root) %{_bindir}/imwheel
