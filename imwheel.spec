@@ -11,7 +11,7 @@ Source2:	imwheelrc.bz2
 Source3:	imwheel
 Patch0:		%{name}-%{version}-etc_X11.patch.bz2
 Patch1:		%{name}-focus-change.patch
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
 
 %define         _prefix         /usr/X11R6
