@@ -4,13 +4,17 @@ Name:		imwheel
 Version:	0.9.9
 Release:	1
 License:	GPL
-Group:		X11/Utilities
-Group(pl):	X11/Narzêdzia
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
+Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Source0:	http://jonatkins.org/imwheel/files/%{name}-%{version}.tar.gz
 Source1:	%{name}-xinitrc
 Patch0:		%{name}-etc_X11.patch.bz2
 Patch1:		%{name}-Makefile.patch
-Patch2:		%{name}-imwheelrc.patch
+Patch2:		%{name}-%{name}rc.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	XFree86-devel
@@ -31,8 +35,8 @@ per-program basis.
 
 %description -l pl
 Imwheel pomaga wykorzystaæ "kó³ka" dostêpne w wielu nowych myszkach,
-takich jak Microsoft IntelliMousem, Genius NetMouse, myszkach
-Logitecha oraz innych.
+takich jak Microsoft IntelliMouse, Genius NetMouse, myszkach Logitecha
+oraz innych.
 
 Imwheel pozwala powi±zaæ sekwencje klawiszy z obrotami kó³ek myszy,
 przy czym dla ka¿dego programy mog± one byæ inne.
@@ -46,7 +50,6 @@ przy czym dla ka¿dego programy mog± one byæ inne.
 %build
 autoconf
 automake -a -c
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-x \
 	--disable-gpm
@@ -61,8 +64,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d/%{name}
 
-gzip -9nf AUTHORS BUGS ChangeLog README EMACS NEWS TODO \
-    $RPM_BUILD_ROOT%{_mandir}/*/*
+gzip -9nf AUTHORS BUGS ChangeLog README EMACS NEWS TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
