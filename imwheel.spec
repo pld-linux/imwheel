@@ -1,17 +1,18 @@
 Summary:	An utility to make wheel mice work under X
 Summary(pl):	Narzêdzie pozwalaj±ce wykorzystaæ rolki myszy w X
 Name:		imwheel
-Version:	0.9.9pre3
+Version:	0.9.9
 Release:	1
 License:	GPL
 Group:		X11/Utilities
 Group(pl):	X11/Narzêdzia
 Source0:	http://jonatkins.org/imwheel/files/%{name}-%{version}.tar.gz
-Source1:	imwheelrc
-#Source2:	wheel.pl.bz2
+Source1:	%{name}-xinitrc
 Patch0:		%{name}-etc_X11.patch.bz2
 Patch1:		%{name}-Makefile.patch
-Patch2:		%{name}-WinAction-SIGSEGV.patch
+Patch2:		%{name}-imwheelrc.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
@@ -40,23 +41,24 @@ przy czym dla ka¿dego programy mog± one byæ inne.
 %setup -q
 %patch0 -p1 
 %patch1 -p1
-%patch2 -p1
 
 %build
-LDFLAGs="-s"; export LDFLAGs
+autoconf
+automake -a -c
+LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-x \
 	--disable-gpm
 
-%{__make} 
+%{__make} DESTDIR="$RPM_BUILD_ROOT"
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d
 %{__make} install DESTDIR="$RPM_BUILD_ROOT"
 
-install -d $RPM_BUILD_ROOT%{_sysconfdir}
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}
-#install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/Xsession.d
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d/%{name}
 
 gzip -9nf AUTHORS BUGS ChangeLog README EMACS NEWS TODO \
     $RPM_BUILD_ROOT%{_mandir}/*/*
@@ -68,6 +70,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {AUTHORS,BUGS,ChangeLog,README,EMACS,NEWS,TODO}.gz
 %config %{_sysconfdir}/imwheelrc
-#%attr(755,root,root) %{_sysconfdir}/Xsession.d/imwheel
-%attr(1755,root,root) %{_bindir}/imwheel
+%attr(755,root,root) %{_sysconfdir}/xinit/xinitrc.d/imwheel
+%attr(755,root,root) %{_bindir}/imwheel
 %{_mandir}/man1/imwheel*
