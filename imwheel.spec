@@ -16,8 +16,6 @@ BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 URL:		http://solaris1.mysolution.com/~jcatki/imwheel/
 
-%define         _prefix         /usr/X11R6
-%define		_mandir		%{_prefix}/man
 %define         _sysconfdir     /etc/X11
 
 %description
