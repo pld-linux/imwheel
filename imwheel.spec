@@ -29,7 +29,7 @@ mice from Logitech.
 
 %build
 rm -f gpm-imwheel
-make 
+%{__make} 
 
 %install
 rm -rf $RPM_BUILD_ROOT
