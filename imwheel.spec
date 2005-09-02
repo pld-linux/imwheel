@@ -13,6 +13,7 @@ Source1:	%{name}-xinitrc
 Patch0:		%{name}-etc_X11.patch.bz2
 Patch1:		%{name}-Makefile.patch
 Patch2:		%{name}-%{name}rc.patch
+Patch3:		%{name}-c.patch
 URL:		http://imwheel.sourceforge.net/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -42,6 +43,7 @@ przy czym dla ka¿dego programu mog± one byæ inne.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3
 
 %build
 rm -f missing
