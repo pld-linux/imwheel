@@ -1,0 +1,16 @@
+--- util.c~	2005-09-01 14:03:13.720733048 +0000
++++ util.c	2005-09-02 10:41:24.158869784 +0000
+@@ -330,12 +330,7 @@
+ 		fclose(f);
+ 		if(pid>0 && useFifo)
+ 		{
+-			fprintf(stderr,"\
+-ERROR: imwheel is already running or there is a stale pid file
+-  check on processes listed below.
+-  run with -k to kill running imwheels.
+-  remove pid file %s.
+-  or run with -p to avoid the pid file altogether.\n",PIDFILE);
++			fprintf(stderr,"ERROR: imwheel is already running or there is a stale pid file\ncheck on processes listed below.\nrun with -k to kill running imwheels.\nremove pid file %s.\nor run with -p to avoid the pid file altogether.\n",PIDFILE);
+ 			if((f=fopen(PIDFILE,"r")))
+ 			{
+ 				while(fscanf(f,"%d",&pid)>0)
