@@ -72,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog README EMACS NEWS TODO
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/imwheelrc
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/imwheelrc
 %attr(755,root,root) %{_sysconfdir}/xinit/xinitrc.d/imwheel
 %attr(755,root,root) %{_bindir}/imwheel
 %{_mandir}/man?/imwheel*
