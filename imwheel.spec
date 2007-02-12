@@ -1,7 +1,7 @@
 # TODO:
 # - SECURITY: http://securitytracker.com/alerts/2004/Aug/1011049.html
 Summary:	An utility to make wheel mice work under X
-Summary(pl):	Narzêdzie pozwalaj±ce wykorzystaæ rolki myszy w X
+Summary(pl.UTF-8):   NarzÄ™dzie pozwalajÄ…ce wykorzystaÄ‡ rolki myszy w X
 Name:		imwheel
 Version:	0.9.9
 Release:	1
@@ -30,13 +30,13 @@ from Logitech and other.
 It does it by emulating key sequences, which are configurable on
 per-program basis.
 
-%description -l pl
-Imwheel pomaga wykorzystaæ "kó³ka" dostêpne w wielu nowych myszkach,
+%description -l pl.UTF-8
+Imwheel pomaga wykorzystaÄ‡ "kÃ³Å‚ka" dostÄ™pne w wielu nowych myszkach,
 takich jak Microsoft IntelliMouse, Genius NetMouse, myszkach Logitecha
 oraz innych.
 
-Imwheel pozwala powi±zaæ sekwencje klawiszy z obrotami kó³ek myszy,
-przy czym dla ka¿dego programu mog± one byæ inne.
+Imwheel pozwala powiÄ…zaÄ‡ sekwencje klawiszy z obrotami kÃ³Å‚ek myszy,
+przy czym dla kaÅ¼dego programu mogÄ… one byÄ‡ inne.
 
 %prep
 %setup -q
