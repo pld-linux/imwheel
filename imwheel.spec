@@ -1,7 +1,7 @@
 # TODO:
 # - SECURITY: http://securitytracker.com/alerts/2004/Aug/1011049.html
 Summary:	An utility to make wheel mice work under X
-Summary(pl.UTF-8):   Narzędzie pozwalające wykorzystać rolki myszy w X
+Summary(pl.UTF-8):	Narzędzie pozwalające wykorzystać rolki myszy w X
 Name:		imwheel
 Version:	0.9.9
 Release:	1
