@@ -1,20 +1,25 @@
-diff -urN imwheel-0.9.9.orig/Makefile.am imwheel-0.9.9/Makefile.am
---- imwheel-0.9.9.orig/Makefile.am	Thu Feb 22 08:38:26 2001
-+++ imwheel-0.9.9/Makefile.am	Wed Sep 19 19:13:53 2001
-@@ -25,12 +25,12 @@
+--- imwheel-1.0.0pre12.org/Makefile.am	2007-02-22 08:41:57.000000000 +0000
++++ imwheel-1.0.0pre12/Makefile.am	2007-02-22 09:01:16.000000000 +0000
+@@ -24,16 +24,16 @@
+ 
+ ETCDIR=/etc/X11/imwheel
+ 
+-install-exec-hook:
++
  if SUID
- install-exec-hook:
- 	progname=$(DESTDIR)$(bindir)/`echo imwheel|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'` ; \
+-	progname=$(DESTDIR)$(bindir)/`echo imwheel|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'` ; \
 -	chown @suid@ $$progname ; \
 -	chmod u+s $$progname
--	install -m 644 imwheelrc /etc/imwheelrc
-+	#chown @suid@ $$progname ; \
-+	#chmod u+s $$progname
-+	install -m 644 imwheelrc $(DESTDIR)/etc/X11//imwheelrc
- else
- install-exec-hook:
--	install -m 644 imwheelrc /etc/imwheelrc
-+	install -m 644 imwheelrc $(DESTDIR)/etc/X11/imwheelrc
++	progname=$(DESTDIR)$(bindir)/`echo imwheel|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'` ; 
++#	chown @suid@ $$progname ; 
++#	chmod u+s $$progname
  endif
+-	$(mkinstalldirs) $(ETCDIR)
++	$(mkinstalldirs) $(DESTDIR)$(ETCDIR)
+ 	-[ -f /etc/imwheelrc ] && mv /etc/imwheelrc $(ETCDIR)/imwheelrc || true
+ 	-[ -f /etc/X11/imwheelrc ] && mv /etc/X11/imwheelrc $(ETCDIR)/imwheelrc || true
+-	-[ -f $(ETCDIR)/imwheelrc ] && install -m 644 imwheelrc $(ETCDIR)/imwheelrc.new || install -m 644 imwheelrc $(ETCDIR)/imwheelrc
++	-[ -f $(ETCDIR)/imwheelrc ] && install -m 644 imwheelrc $(DESTDIR)$(ETCDIR)/imwheelrc.new || install -m 644 imwheelrc $(DESTDIR)$(ETCDIR)/imwheelrc
  
  extras: $(EXTRA_PROGRAMS)
+ 

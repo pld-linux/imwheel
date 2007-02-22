@@ -3,19 +3,20 @@
 Summary:	An utility to make wheel mice work under X
 Summary(pl.UTF-8):	Narzędzie pozwalające wykorzystać rolki myszy w X
 Name:		imwheel
-Version:	0.9.9
-Release:	1
+Version:	1.0.0
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/imwheel/%{name}-%{version}.tar.gz
-# Source0-md5:	1010dadb54a38a20f7fec430e6e5d262
+Source0:	http://dl.sourceforge.net/imwheel/%{name}-%{version}pre12.tar.gz
+# Source0-md5:	21d81db739ae95d96f9b650f7b826a14
 Source1:	%{name}-xinitrc
-Patch0:		%{name}-etc_X11.patch.bz2
-Patch1:		%{name}-Makefile.patch
-Patch2:		%{name}-%{name}rc.patch
-Patch3:		%{name}-c.patch
+Patch0:		%{name}-Makefile.patch
 URL:		http://imwheel.sourceforge.net/
-BuildRequires:	XFree86-devel
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xorg-lib-libXmu-devel
+BuildRequires:	xorg-lib-libXt-devel
+BuildRequires:	xorg-lib-libXtst-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -39,11 +40,8 @@ Imwheel pozwala powiązać sekwencje klawiszy z obrotami kółek myszy,
 przy czym dla każdego programu mogą one być inne.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}pre12
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3
 
 %build
 rm -f missing
@@ -52,7 +50,11 @@ rm -f missing
 %{__automake}
 %configure \
 	--with-x \
-	--disable-gpm
+	--disable-gpm \
+	--enable-mdetect \
+	--enable-mdump \
+	--enable-extras 
+#	--with-pid-dir=dir
 
 %{__make} \
 	DESTDIR="$RPM_BUILD_ROOT"
@@ -65,6 +67,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d
 	DESTDIR="$RPM_BUILD_ROOT"
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/xinit/xinitrc.d/%{name}
+install imwheelrc $RPM_BUILD_ROOT%{_sysconfdir}/imwheelrc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
